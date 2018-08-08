@@ -93,9 +93,9 @@ func (d *Dialer) Dial() (SendCloser, error) {
 		return nil, err
 	}
 
-	if d.Timeout > 0 {
+	/*if d.Timeout > 0 {
 		conn.SetDeadline(time.Now().Add(d.Timeout))
-	}
+	}*/
 
 	if d.LocalName != "" {
 		if err := c.Hello(d.LocalName); err != nil {
