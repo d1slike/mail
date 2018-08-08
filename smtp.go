@@ -267,6 +267,10 @@ func (c *smtpSender) Send(from string, to []string, msg io.WriterTo) error {
 	return w.Close()
 }
 
+func (c *smtpSender) Noop() error {
+	return c.smtpClient.Noop()
+}
+
 func (c *smtpSender) Close() error {
 	return c.Quit()
 }
@@ -286,6 +290,7 @@ type smtpClient interface {
 	Auth(smtp.Auth) error
 	Mail(string) error
 	Rcpt(string) error
+	Noop() error
 	Data() (io.WriteCloser, error)
 	Quit() error
 	Close() error

@@ -17,6 +17,7 @@ type Sender interface {
 // SendCloser is the interface that groups the Send and Close methods.
 type SendCloser interface {
 	Sender
+	Noop() error
 	Close() error
 }
 
